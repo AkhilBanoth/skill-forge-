@@ -76,7 +76,7 @@ app = FastAPI(
     description="AI Learning, Certification & Career Readiness Platform",
     lifespan=lifespan,
 )
-from fastapi.middleware.cors import CORSMiddleware
+
 
 app.add_middleware(
     CORSMiddleware,
