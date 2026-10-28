@@ -7,6 +7,8 @@ from fastapi import FastAPI
 from app.config import settings
 from app.database.mongodb import check_mongodb, close_mongodb
 from app.database.postgres import Base, engine
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # Import models so SQLAlchemy can register the database tables.
 from app.models import project
@@ -74,7 +76,18 @@ app = FastAPI(
     description="AI Learning, Certification & Career Readiness Platform",
     lifespan=lifespan,
 )
+from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Register all existing API routers.
 app.include_router(auth_router)
