@@ -76,8 +76,6 @@ app = FastAPI(
     description="AI Learning, Certification & Career Readiness Platform",
     lifespan=lifespan,
 )
-
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
