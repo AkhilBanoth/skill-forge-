@@ -1,9 +1,11 @@
+
+import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
     APP_NAME: str = "SkillForge"
-    DEBUG: bool = True
+    DEBUG: bool = False
 
     DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/skillforge"
 
