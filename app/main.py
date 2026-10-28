@@ -1,4 +1,4 @@
-
+from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from app.config import settings
 from app.database.mongodb import check_mongodb, close_mongodb
 from app.database.postgres import Base, engine
-from fastapi.middleware.cors import CORSMiddleware
+
 
 
 # Import models so SQLAlchemy can register the database tables.
@@ -76,6 +76,7 @@ app = FastAPI(
     description="AI Learning, Certification & Career Readiness Platform",
     lifespan=lifespan,
 )
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
